@@ -44,8 +44,11 @@
     if (![self respondsToSelector:setterSEL]) {
         return;
     }
+    if ([@[@"c",@"i",@"s",@"l",@"q",@"C",@"I",@"S",@"L",@"Q",@"f",@"d",@"B"] containsObject:property.type] && [jsonValue isKindOfClass:[NSString class]]) {
+        //转换成 NSNumber
+        jsonValue = @([(NSString*)jsonValue doubleValue]);
+    }
     if ([property.type isEqualToString:@"c"] && [jsonValue respondsToSelector:@selector(charValue)]) {
-        //ptd 后期这里可以做 NSNumber 和 NSString 的自动转换
         ((void(*)(id,SEL,char))(void*)objc_msgSend)(self, setterSEL, [jsonValue charValue]);
         
     } else if ([property.type isEqualToString:@"i"] && [jsonValue respondsToSelector:@selector(intValue)]) {
