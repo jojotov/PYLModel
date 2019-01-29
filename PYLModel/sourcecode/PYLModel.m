@@ -91,56 +91,14 @@
         ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, [jsonValue mutableCopy]);
     
     } else if ([property.type isEqualToString:@"NSDate"]) {
-        NSString *dateFormat = self.propertyName_dateFormat_mapper[property.name];
-        NSDate *date;
-        if (dateFormat.length) {
-            //使用 format 处理
-            NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
-            fmt.dateFormat = dateFormat;
-            date = [fmt dateFromString:jsonValue];
-        } else if ([jsonValue respondsToSelector:@selector(longLongValue)]) {
-            //使用时间戳处理
-            date = [NSDate dateWithTimeIntervalSince1970:[jsonValue longLongValue]];
-        }
-        if (date) {
-            ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, date);
-        }
+        [self setJSONValue:jsonValue withDateProperty:property setterSEL:setterSEL];
+        
     } else if (([property.type isEqualToString:@"NSArray"] || [property.type isEqualToString:@"NSMutableArray"]) && [jsonValue isKindOfClass:[NSArray class]]) {
-        Class elementClass = self.propertyName_elementClass_mapper[property.name];
-        if (elementClass) {
-            //元素是另一个类
-            if ([elementClass isSubclassOfClass:[PYLModel class]]) {
-                NSMutableArray *tmpArray = @[].mutableCopy;
-                for (id elementJSON in jsonValue) {
-                    id element = [[elementClass alloc] initWithJSON:elementJSON];
-                    [tmpArray addObject:element];
-                }
-                ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, tmpArray);
-            } else {
-                NSLog(@"元素类型也应该继承 PYLModel %s", __func__);
-            }
-        } else {
-            //直接赋值
-            ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, [jsonValue mutableCopy]);
-        }
+        [self setJSONValue:jsonValue withArrayProperty:property setterSEL:setterSEL];
+        
     } else if (([property.type isEqualToString:@"NSDictionary"] || [property.type isEqualToString:@"NSMutableDictionary"]) && [jsonValue isKindOfClass:[NSDictionary class]]) {
-        Class elementClass = self.propertyName_elementClass_mapper[property.name];
-        if (elementClass) {
-            //元素是另一个类
-            if ([elementClass isSubclassOfClass:[PYLModel class]]) {
-                NSMutableDictionary *tmpDict = @{}.mutableCopy;
-                [jsonValue enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull elementJSON, BOOL * _Nonnull stop) {
-                    id element = [[elementClass alloc] initWithJSON:elementJSON];
-                    tmpDict[key] = element;
-                }];
-                ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, tmpDict);
-            } else {
-                NSLog(@"元素类型也应该继承 PYLModel %s", __func__);
-            }
-        } else {
-            //直接赋值
-            ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, [jsonValue mutableCopy]);
-        }
+        [self setJSONValue:jsonValue withDictionaryProperty:property setterSEL:setterSEL];
+        
     } else {
         //property.type 是自定义的类
         Class cls = objc_getClass([property.type UTF8String]);
@@ -148,6 +106,71 @@
             id object = [[cls alloc] initWithJSON:jsonValue];
             ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, object);
         }
+    }
+}
+
+- (void)setJSONValue:(id)jsonValue withDateProperty:(PYLModelProperty *)property setterSEL:(SEL)setterSEL {
+    NSString *dateFormat = self.propertyName_dateFormat_mapper[property.name];
+    NSDate *date;
+    if (dateFormat.length) {
+        //使用 format 处理
+        NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+        fmt.dateFormat = dateFormat;
+        date = [fmt dateFromString:jsonValue];
+    } else if ([jsonValue respondsToSelector:@selector(longLongValue)]) {
+        //使用时间戳处理
+        date = [NSDate dateWithTimeIntervalSince1970:[jsonValue longLongValue]];
+    }
+    if (date) {
+        ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, date);
+    }
+}
+
+- (void)setJSONValue:(id)jsonValue withArrayProperty:(PYLModelProperty *)property setterSEL:(SEL)setterSEL {
+    Class elementClass = self.propertyName_elementClass_mapper[property.name];
+    if (elementClass) {
+        //元素是另一个类
+        if ([elementClass isSubclassOfClass:[PYLModel class]]) {
+            NSMutableArray *tmpArray = @[].mutableCopy;
+            for (id elementJSON in jsonValue) {
+                if ([elementJSON isKindOfClass:[NSDictionary class]]) {
+                    id element = [[elementClass alloc] initWithJSON:elementJSON];
+                    [tmpArray addObject:element];
+                }
+            }
+            if (tmpArray.count) {
+                ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, tmpArray);
+            }
+        } else {
+            NSLog(@"元素类型也应该继承 PYLModel %s", __func__);
+        }
+    } else {
+        //直接赋值
+        ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, [jsonValue mutableCopy]);
+    }
+}
+
+- (void)setJSONValue:(id)jsonValue withDictionaryProperty:(PYLModelProperty *)property setterSEL:(SEL)setterSEL {
+    Class elementClass = self.propertyName_elementClass_mapper[property.name];
+    if (elementClass) {
+        //元素是另一个类
+        if ([elementClass isSubclassOfClass:[PYLModel class]]) {
+            NSMutableDictionary *tmpDict = @{}.mutableCopy;
+            [jsonValue enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull elementJSON, BOOL * _Nonnull stop) {
+                if ([elementJSON isKindOfClass:[NSDictionary class]]) {
+                    id element = [[elementClass alloc] initWithJSON:elementJSON];
+                    tmpDict[key] = element;
+                }
+            }];
+            if (tmpDict.allKeys.count) {
+                ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, tmpDict);
+            }
+        } else {
+            NSLog(@"元素类型也应该继承 PYLModel %s", __func__);
+        }
+    } else {
+        //直接赋值
+        ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, [jsonValue mutableCopy]);
     }
 }
 

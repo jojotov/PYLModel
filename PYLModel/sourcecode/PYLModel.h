@@ -13,6 +13,10 @@
 - (instancetype)initWithJSON:(NSDictionary *)json;
 - (NSDictionary<NSString *, NSString *> *)propertyName_jsonKey_mapper;
 - (NSDictionary<NSString *, NSString *> *)propertyName_dateFormat_mapper;
-- (NSDictionary<NSString *, Class> *)propertyName_elementClass_mapper; //标明容器类型，Array, MutableArray 的元素 class，如果不标明，就不会对自定义的元素类做转换
+
+/*
+ * 当要给数组或字典类型赋值时，会查询这个mapper有没有指明元素的class，如果有，会把元素转成相应class,如果没有，字典或数组会直接赋值给self
+ */
+- (NSDictionary<NSString *, Class> *)propertyName_elementClass_mapper;
 @end
 
