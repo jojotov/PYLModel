@@ -6,14 +6,13 @@
 //  Copyright © 2019 pangyulei. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-//! Project version number for PYLModel.
-FOUNDATION_EXPORT double PYLModelVersionNumber;
 
-//! Project version string for PYLModel.
-FOUNDATION_EXPORT const unsigned char PYLModelVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <PYLModel/PublicHeader.h>
-
+@interface PYLModel : NSObject
+- (instancetype)initWithJSON:(NSDictionary *)json;
+- (NSDictionary<NSString *, NSString *> *)propertyName_jsonKey_mapper;
+- (NSDictionary<NSString *, NSString *> *)propertyName_dateFormat_mapper;
+- (NSDictionary<NSString *, Class> *)propertyName_elementClass_mapper; //标明容器类型，Array, MutableArray 的元素 class，如果不标明，就不会对自定义的元素类做转换
+@end
 

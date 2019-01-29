@@ -7,43 +7,58 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		44EE581721FFD75200DD43E5 /* PYLModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE580D21FFD75200DD43E5 /* PYLModel.framework */; };
-		44EE581C21FFD75200DD43E5 /* PYLModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EE581B21FFD75200DD43E5 /* PYLModelTests.m */; };
-		44EE581E21FFD75200DD43E5 /* PYLModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 44EE581021FFD75200DD43E5 /* PYLModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		44EE588321FFDE2200DD43E5 /* PYLModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE587A21FFDE2200DD43E5 /* PYLModel.framework */; };
+		44EE589321FFDE6400DD43E5 /* PYLModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 44EE589121FFDE6400DD43E5 /* PYLModel.h */; };
+		44EE589421FFDE6400DD43E5 /* PYLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EE589221FFDE6400DD43E5 /* PYLModel.m */; };
+		44EE589A21FFDEA300DD43E5 /* PYLModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EE589821FFDEA300DD43E5 /* PYLModelTests.m */; };
+		44EE589E21FFDF1C00DD43E5 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EE589D21FFDF1C00DD43E5 /* Book.m */; };
+		44EE58A121FFDF3700DD43E5 /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EE58A021FFDF3700DD43E5 /* Author.m */; };
+		44EE58AC21FFE8B700DD43E5 /* PYLModelProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 44EE58AA21FFE8B700DD43E5 /* PYLModelProperty.h */; };
+		44EE58AD21FFE8B700DD43E5 /* PYLModelProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EE58AB21FFE8B700DD43E5 /* PYLModelProperty.m */; };
+		44EE58B02200081000DD43E5 /* ajiojesad.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EE58AF2200081000DD43E5 /* ajiojesad.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		44EE581821FFD75200DD43E5 /* PBXContainerItemProxy */ = {
+		44EE588421FFDE2200DD43E5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 44EE580421FFD75200DD43E5 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 44EE580C21FFD75200DD43E5;
+			remoteGlobalIDString = 44EE587921FFDE2200DD43E5;
 			remoteInfo = PYLModel;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		44EE580D21FFD75200DD43E5 /* PYLModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PYLModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		44EE581021FFD75200DD43E5 /* PYLModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PYLModel.h; sourceTree = "<group>"; };
-		44EE581121FFD75200DD43E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		44EE581621FFD75200DD43E5 /* PYLModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PYLModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		44EE581B21FFD75200DD43E5 /* PYLModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PYLModelTests.m; sourceTree = "<group>"; };
-		44EE581D21FFD75200DD43E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44EE587A21FFDE2200DD43E5 /* PYLModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PYLModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44EE587D21FFDE2200DD43E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44EE588221FFDE2200DD43E5 /* PYLModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PYLModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44EE589121FFDE6400DD43E5 /* PYLModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PYLModel.h; sourceTree = "<group>"; };
+		44EE589221FFDE6400DD43E5 /* PYLModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PYLModel.m; sourceTree = "<group>"; };
+		44EE589821FFDEA300DD43E5 /* PYLModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYLModelTests.m; sourceTree = "<group>"; };
+		44EE589921FFDEA300DD43E5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44EE589C21FFDF1C00DD43E5 /* Book.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
+		44EE589D21FFDF1C00DD43E5 /* Book.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
+		44EE589F21FFDF3700DD43E5 /* Author.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Author.h; sourceTree = "<group>"; };
+		44EE58A021FFDF3700DD43E5 /* Author.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Author.m; sourceTree = "<group>"; };
+		44EE58AA21FFE8B700DD43E5 /* PYLModelProperty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PYLModelProperty.h; sourceTree = "<group>"; };
+		44EE58AB21FFE8B700DD43E5 /* PYLModelProperty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PYLModelProperty.m; sourceTree = "<group>"; };
+		44EE58AE2200081000DD43E5 /* ajiojesad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ajiojesad.h; sourceTree = "<group>"; };
+		44EE58AF2200081000DD43E5 /* ajiojesad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ajiojesad.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		44EE580A21FFD75200DD43E5 /* Frameworks */ = {
+		44EE587721FFDE2200DD43E5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		44EE581321FFD75200DD43E5 /* Frameworks */ = {
+		44EE587F21FFDE2200DD43E5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44EE581721FFD75200DD43E5 /* PYLModel.framework in Frameworks */,
+				44EE588321FFDE2200DD43E5 /* PYLModel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,8 +68,8 @@
 		44EE580321FFD75200DD43E5 = {
 			isa = PBXGroup;
 			children = (
-				44EE580F21FFD75200DD43E5 /* PYLModel */,
-				44EE581A21FFD75200DD43E5 /* PYLModelTests */,
+				44EE587B21FFDE2200DD43E5 /* PYLModel */,
+				44EE589721FFDEA300DD43E5 /* PYLModelTests */,
 				44EE580E21FFD75200DD43E5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,26 +77,35 @@
 		44EE580E21FFD75200DD43E5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				44EE580D21FFD75200DD43E5 /* PYLModel.framework */,
-				44EE581621FFD75200DD43E5 /* PYLModelTests.xctest */,
+				44EE587A21FFDE2200DD43E5 /* PYLModel.framework */,
+				44EE588221FFDE2200DD43E5 /* PYLModelTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		44EE580F21FFD75200DD43E5 /* PYLModel */ = {
+		44EE587B21FFDE2200DD43E5 /* PYLModel */ = {
 			isa = PBXGroup;
 			children = (
-				44EE581021FFD75200DD43E5 /* PYLModel.h */,
-				44EE581121FFD75200DD43E5 /* Info.plist */,
+				44EE587D21FFDE2200DD43E5 /* Info.plist */,
+				44EE589121FFDE6400DD43E5 /* PYLModel.h */,
+				44EE589221FFDE6400DD43E5 /* PYLModel.m */,
+				44EE58AA21FFE8B700DD43E5 /* PYLModelProperty.h */,
+				44EE58AB21FFE8B700DD43E5 /* PYLModelProperty.m */,
 			);
 			path = PYLModel;
 			sourceTree = "<group>";
 		};
-		44EE581A21FFD75200DD43E5 /* PYLModelTests */ = {
+		44EE589721FFDEA300DD43E5 /* PYLModelTests */ = {
 			isa = PBXGroup;
 			children = (
-				44EE581B21FFD75200DD43E5 /* PYLModelTests.m */,
-				44EE581D21FFD75200DD43E5 /* Info.plist */,
+				44EE589821FFDEA300DD43E5 /* PYLModelTests.m */,
+				44EE589C21FFDF1C00DD43E5 /* Book.h */,
+				44EE589D21FFDF1C00DD43E5 /* Book.m */,
+				44EE589F21FFDF3700DD43E5 /* Author.h */,
+				44EE58A021FFDF3700DD43E5 /* Author.m */,
+				44EE58AE2200081000DD43E5 /* ajiojesad.h */,
+				44EE58AF2200081000DD43E5 /* ajiojesad.m */,
+				44EE589921FFDEA300DD43E5 /* Info.plist */,
 			);
 			path = PYLModelTests;
 			sourceTree = "<group>";
@@ -89,25 +113,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		44EE580821FFD75200DD43E5 /* Headers */ = {
+		44EE587521FFDE2200DD43E5 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44EE581E21FFD75200DD43E5 /* PYLModel.h in Headers */,
+				44EE589321FFDE6400DD43E5 /* PYLModel.h in Headers */,
+				44EE58AC21FFE8B700DD43E5 /* PYLModelProperty.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		44EE580C21FFD75200DD43E5 /* PYLModel */ = {
+		44EE587921FFDE2200DD43E5 /* PYLModel */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44EE582121FFD75200DD43E5 /* Build configuration list for PBXNativeTarget "PYLModel" */;
+			buildConfigurationList = 44EE588B21FFDE2200DD43E5 /* Build configuration list for PBXNativeTarget "PYLModel" */;
 			buildPhases = (
-				44EE580821FFD75200DD43E5 /* Headers */,
-				44EE580921FFD75200DD43E5 /* Sources */,
-				44EE580A21FFD75200DD43E5 /* Frameworks */,
-				44EE580B21FFD75200DD43E5 /* Resources */,
+				44EE587521FFDE2200DD43E5 /* Headers */,
+				44EE587621FFDE2200DD43E5 /* Sources */,
+				44EE587721FFDE2200DD43E5 /* Frameworks */,
+				44EE587821FFDE2200DD43E5 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -115,25 +140,25 @@
 			);
 			name = PYLModel;
 			productName = PYLModel;
-			productReference = 44EE580D21FFD75200DD43E5 /* PYLModel.framework */;
+			productReference = 44EE587A21FFDE2200DD43E5 /* PYLModel.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		44EE581521FFD75200DD43E5 /* PYLModelTests */ = {
+		44EE588121FFDE2200DD43E5 /* PYLModelTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44EE582421FFD75200DD43E5 /* Build configuration list for PBXNativeTarget "PYLModelTests" */;
+			buildConfigurationList = 44EE588E21FFDE2200DD43E5 /* Build configuration list for PBXNativeTarget "PYLModelTests" */;
 			buildPhases = (
-				44EE581221FFD75200DD43E5 /* Sources */,
-				44EE581321FFD75200DD43E5 /* Frameworks */,
-				44EE581421FFD75200DD43E5 /* Resources */,
+				44EE587E21FFDE2200DD43E5 /* Sources */,
+				44EE587F21FFDE2200DD43E5 /* Frameworks */,
+				44EE588021FFDE2200DD43E5 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				44EE581921FFD75200DD43E5 /* PBXTargetDependency */,
+				44EE588521FFDE2200DD43E5 /* PBXTargetDependency */,
 			);
 			name = PYLModelTests;
 			productName = PYLModelTests;
-			productReference = 44EE581621FFD75200DD43E5 /* PYLModelTests.xctest */;
+			productReference = 44EE588221FFDE2200DD43E5 /* PYLModelTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -145,10 +170,10 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = pangyulei;
 				TargetAttributes = {
-					44EE580C21FFD75200DD43E5 = {
+					44EE587921FFDE2200DD43E5 = {
 						CreatedOnToolsVersion = 10.1;
 					};
-					44EE581521FFD75200DD43E5 = {
+					44EE588121FFDE2200DD43E5 = {
 						CreatedOnToolsVersion = 10.1;
 					};
 				};
@@ -165,21 +190,21 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				44EE580C21FFD75200DD43E5 /* PYLModel */,
-				44EE581521FFD75200DD43E5 /* PYLModelTests */,
+				44EE587921FFDE2200DD43E5 /* PYLModel */,
+				44EE588121FFDE2200DD43E5 /* PYLModelTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		44EE580B21FFD75200DD43E5 /* Resources */ = {
+		44EE587821FFDE2200DD43E5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		44EE581421FFD75200DD43E5 /* Resources */ = {
+		44EE588021FFDE2200DD43E5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -189,28 +214,33 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		44EE580921FFD75200DD43E5 /* Sources */ = {
+		44EE587621FFDE2200DD43E5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44EE58AD21FFE8B700DD43E5 /* PYLModelProperty.m in Sources */,
+				44EE589421FFDE6400DD43E5 /* PYLModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		44EE581221FFD75200DD43E5 /* Sources */ = {
+		44EE587E21FFDE2200DD43E5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44EE581C21FFD75200DD43E5 /* PYLModelTests.m in Sources */,
+				44EE58B02200081000DD43E5 /* ajiojesad.m in Sources */,
+				44EE589E21FFDF1C00DD43E5 /* Book.m in Sources */,
+				44EE589A21FFDEA300DD43E5 /* PYLModelTests.m in Sources */,
+				44EE58A121FFDF3700DD43E5 /* Author.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		44EE581921FFD75200DD43E5 /* PBXTargetDependency */ = {
+		44EE588521FFDE2200DD43E5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 44EE580C21FFD75200DD43E5 /* PYLModel */;
-			targetProxy = 44EE581821FFD75200DD43E5 /* PBXContainerItemProxy */;
+			target = 44EE587921FFDE2200DD43E5 /* PYLModel */;
+			targetProxy = 44EE588421FFDE2200DD43E5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -333,7 +363,7 @@
 			};
 			name = Release;
 		};
-		44EE582221FFD75200DD43E5 /* Debug */ = {
+		44EE588C21FFDE2200DD43E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
@@ -356,7 +386,7 @@
 			};
 			name = Debug;
 		};
-		44EE582321FFD75200DD43E5 /* Release */ = {
+		44EE588D21FFDE2200DD43E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
@@ -379,7 +409,7 @@
 			};
 			name = Release;
 		};
-		44EE582521FFD75200DD43E5 /* Debug */ = {
+		44EE588F21FFDE2200DD43E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -395,7 +425,7 @@
 			};
 			name = Debug;
 		};
-		44EE582621FFD75200DD43E5 /* Release */ = {
+		44EE589021FFDE2200DD43E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -423,20 +453,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44EE582121FFD75200DD43E5 /* Build configuration list for PBXNativeTarget "PYLModel" */ = {
+		44EE588B21FFDE2200DD43E5 /* Build configuration list for PBXNativeTarget "PYLModel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				44EE582221FFD75200DD43E5 /* Debug */,
-				44EE582321FFD75200DD43E5 /* Release */,
+				44EE588C21FFDE2200DD43E5 /* Debug */,
+				44EE588D21FFDE2200DD43E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44EE582421FFD75200DD43E5 /* Build configuration list for PBXNativeTarget "PYLModelTests" */ = {
+		44EE588E21FFDE2200DD43E5 /* Build configuration list for PBXNativeTarget "PYLModelTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				44EE582521FFD75200DD43E5 /* Debug */,
-				44EE582621FFD75200DD43E5 /* Release */,
+				44EE588F21FFDE2200DD43E5 /* Debug */,
+				44EE589021FFDE2200DD43E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
