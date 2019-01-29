@@ -40,6 +40,9 @@
 }
 
 - (void)setJSONValue:(id)jsonValue withProperty:(PYLModelProperty *)property {
+    if (!jsonValue) {
+        return;
+    }
     SEL setterSEL = [self setterSEL:property];
     if (![self respondsToSelector:setterSEL]) {
         return;
