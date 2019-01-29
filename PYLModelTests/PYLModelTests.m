@@ -18,6 +18,7 @@
 
 - (void)testExample {
     NSDictionary *bookJSON = @{
+                               @"salary":@30000,
                                @"sign":@('e'),
                                @"isSoldOut":@0,
                                @"isOkForKid":@"trUe",
@@ -58,6 +59,9 @@
     XCTAssertNil(aBook.name);
     XCTAssert(aBook.created.timeIntervalSince1970 == 190429809);
     XCTAssert(aBook.updated.timeIntervalSince1970 == 1548691200);
+    
+    XCTAssert([aBook.salary isEqualToString:@"30000"]);
+    XCTAssert([aBook.salary isKindOfClass:[NSString class]]);
     
     XCTAssert([aBook.extraAuthDict respondsToSelector:@selector(setObject:forKey:)]);
     Author *author = aBook.extraAuthDict[@"blacklist"];
