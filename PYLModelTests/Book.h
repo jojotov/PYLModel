@@ -21,4 +21,5 @@
 @property (nonatomic) NSArray<NSString *> *previews;
 @property (nonatomic) NSMutableArray<Author *> *authors;
 @property (nonatomic) Author *single;
+@property (nonatomic) NSMutableDictionary<id,Author*> *extraAuthDict;
 @end

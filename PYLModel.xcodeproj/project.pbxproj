@@ -15,7 +15,6 @@
 		44EE58A121FFDF3700DD43E5 /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EE58A021FFDF3700DD43E5 /* Author.m */; };
 		44EE58AC21FFE8B700DD43E5 /* PYLModelProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 44EE58AA21FFE8B700DD43E5 /* PYLModelProperty.h */; };
 		44EE58AD21FFE8B700DD43E5 /* PYLModelProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EE58AB21FFE8B700DD43E5 /* PYLModelProperty.m */; };
-		44EE58B02200081000DD43E5 /* ajiojesad.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EE58AF2200081000DD43E5 /* ajiojesad.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +41,6 @@
 		44EE58A021FFDF3700DD43E5 /* Author.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Author.m; sourceTree = "<group>"; };
 		44EE58AA21FFE8B700DD43E5 /* PYLModelProperty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PYLModelProperty.h; sourceTree = "<group>"; };
 		44EE58AB21FFE8B700DD43E5 /* PYLModelProperty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PYLModelProperty.m; sourceTree = "<group>"; };
-		44EE58AE2200081000DD43E5 /* ajiojesad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ajiojesad.h; sourceTree = "<group>"; };
-		44EE58AF2200081000DD43E5 /* ajiojesad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ajiojesad.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,10 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				44EE587D21FFDE2200DD43E5 /* Info.plist */,
-				44EE589121FFDE6400DD43E5 /* PYLModel.h */,
-				44EE589221FFDE6400DD43E5 /* PYLModel.m */,
-				44EE58AA21FFE8B700DD43E5 /* PYLModelProperty.h */,
-				44EE58AB21FFE8B700DD43E5 /* PYLModelProperty.m */,
+				44EE58B122001AEA00DD43E5 /* sourcecode */,
 			);
 			path = PYLModel;
 			sourceTree = "<group>";
@@ -103,11 +97,20 @@
 				44EE589D21FFDF1C00DD43E5 /* Book.m */,
 				44EE589F21FFDF3700DD43E5 /* Author.h */,
 				44EE58A021FFDF3700DD43E5 /* Author.m */,
-				44EE58AE2200081000DD43E5 /* ajiojesad.h */,
-				44EE58AF2200081000DD43E5 /* ajiojesad.m */,
 				44EE589921FFDEA300DD43E5 /* Info.plist */,
 			);
 			path = PYLModelTests;
+			sourceTree = "<group>";
+		};
+		44EE58B122001AEA00DD43E5 /* sourcecode */ = {
+			isa = PBXGroup;
+			children = (
+				44EE589121FFDE6400DD43E5 /* PYLModel.h */,
+				44EE589221FFDE6400DD43E5 /* PYLModel.m */,
+				44EE58AA21FFE8B700DD43E5 /* PYLModelProperty.h */,
+				44EE58AB21FFE8B700DD43E5 /* PYLModelProperty.m */,
+			);
+			path = sourcecode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,7 +230,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44EE58B02200081000DD43E5 /* ajiojesad.m in Sources */,
 				44EE589E21FFDF1C00DD43E5 /* Book.m in Sources */,
 				44EE589A21FFDEA300DD43E5 /* PYLModelTests.m in Sources */,
 				44EE58A121FFDF3700DD43E5 /* Author.m in Sources */,

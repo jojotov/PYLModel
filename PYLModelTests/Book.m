@@ -21,7 +21,7 @@
 }
 
 - (NSDictionary<NSString *,Class> *)propertyName_elementClass_mapper {
-    return @{@"authors":Author.class};
+    return @{@"authors":Author.class, @"extraAuthDict":Author.class};
 }
 
 - (NSDictionary<NSString *,NSString *> *)propertyName_dateFormat_mapper {

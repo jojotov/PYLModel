@@ -9,7 +9,6 @@
 #import <XCTest/XCTest.h>
 #import "Book.h"
 #import "Author.h"
-#import "ajiojesad.h"
 
 @interface PYLModelTests : XCTestCase
 
@@ -44,6 +43,12 @@
                                @"singleAuthor": @{
                                        @"name":@"smith",
                                        @"age":@30
+                                       },
+                               @"extraAuthDict":@{
+                                       @"blacklist":@{
+                                               @"name":@"lucy",
+                                               @"age":@"18"
+                                               }
                                        }
                                };
     Book *aBook = [[Book alloc] initWithJSON:bookJSON];
@@ -54,6 +59,12 @@
     XCTAssert(aBook.created.timeIntervalSince1970 == 190429809);
     XCTAssert(aBook.updated.timeIntervalSince1970 == 1548691200);
     
+    XCTAssert([aBook.extraAuthDict respondsToSelector:@selector(setObject:forKey:)]);
+    Author *author = aBook.extraAuthDict[@"blacklist"];
+    XCTAssert([author isKindOfClass:[Author class]]);
+    XCTAssert([author.name isEqualToString:@"lucy"]);
+    XCTAssert(author.age == 18);
+    
     XCTAssert(aBook.previews.count == 2);
     XCTAssert([aBook.previews[0] isKindOfClass:[NSString class]]);
     XCTAssert([aBook.previews isKindOfClass:[NSArray class]]);
@@ -61,7 +72,7 @@
     XCTAssert(aBook.authors.count == 2);
     XCTAssert([aBook.authors respondsToSelector:@selector(removeObjectAtIndex:)]);
     
-    Author *author = aBook.authors[0];
+    author = aBook.authors[0];
     XCTAssert([author isKindOfClass:[Author class]]);
     XCTAssert([author.name isEqualToString:@"john"]);
     XCTAssert(author.age == 27);

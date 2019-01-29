@@ -128,8 +128,12 @@
         if (elementClass) {
             //元素是另一个类
             if ([elementClass isSubclassOfClass:[PYLModel class]]) {
-                id object = [[elementClass alloc] initWithJSON:jsonValue];
-                ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, object);
+                NSMutableDictionary *tmpDict = @{}.mutableCopy;
+                [jsonValue enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull elementJSON, BOOL * _Nonnull stop) {
+                    id element = [[elementClass alloc] initWithJSON:elementJSON];
+                    tmpDict[key] = element;
+                }];
+                ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, tmpDict);
             } else {
                 NSLog(@"元素类型也应该继承 PYLModel %s", __func__);
             }
