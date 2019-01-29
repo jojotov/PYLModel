@@ -22,7 +22,8 @@
                                @"sign":@('e'),
                                @"isSoldOut":@0,
                                @"isOkForKid":@"trUe",
-                               @"id": @1,
+                               @"id": @999999999999999999,
+                               @"testShort": @([@2 shortValue]),
                                @"name":[NSNull null],
                                @"created_at": @190429809,
                                @"updated_at": @"2019-01-29",
@@ -46,14 +47,20 @@
                                        }
                                };
     Book *aBook = [[Book alloc] initWithJSON:bookJSON];
-    XCTAssert(aBook.bookID == 1);
+    XCTAssert(aBook.bookID == 999999999999999999);
+    XCTAssert(aBook.testShort == 2);
     XCTAssert(sizeof(aBook.bookID) == sizeof(long long));
     XCTAssertNil(aBook.name);
     XCTAssert(aBook.created.timeIntervalSince1970 == 190429809);
     XCTAssert(aBook.updated.timeIntervalSince1970 == 1548691200);
+    
     XCTAssert(aBook.previews.count == 2);
     XCTAssert([aBook.previews[0] isKindOfClass:[NSString class]]);
+    XCTAssert([aBook.previews isKindOfClass:[NSArray class]]);
+    
     XCTAssert(aBook.authors.count == 2);
+    XCTAssert([aBook.authors respondsToSelector:@selector(removeObjectAtIndex:)]);
+    
     Author *author = aBook.authors[0];
     XCTAssert([author isKindOfClass:[Author class]]);
     XCTAssert([author.name isEqualToString:@"john"]);

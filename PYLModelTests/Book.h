@@ -14,6 +14,7 @@
 @property (nonatomic) BOOL isSoldOut;
 @property (nonatomic) BOOL isOkForKid;
 @property (nonatomic) char sign;
+@property (nonatomic) short testShort;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic) NSDate *created;
 @property (nonatomic) NSDate *updated;
