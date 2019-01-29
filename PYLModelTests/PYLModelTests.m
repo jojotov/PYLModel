@@ -19,6 +19,8 @@
 
 - (void)testExample {
     NSDictionary *bookJSON = @{
+                               @"isSoldOut":@0,
+                               @"isOkForKid":@"trUe",
                                @"id": @1,
                                @"name":[NSNull null],
                                @"created_at": @190429809,
@@ -64,6 +66,8 @@
     XCTAssert([author.name isEqualToString:@"jack"]);
     XCTAssert(author.age == 25);
     
+    XCTAssert(aBook.isSoldOut == false);
+    XCTAssert(aBook.isOkForKid == YES);
 }
 
 

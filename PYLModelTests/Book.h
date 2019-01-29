@@ -11,6 +11,8 @@
 @class Author;
 @interface Book : PYLModel
 @property (nonatomic) long long bookID;
+@property (nonatomic) BOOL isSoldOut;
+@property (nonatomic) BOOL isOkForKid;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic) NSDate *created;
 @property (nonatomic) NSDate *updated;
