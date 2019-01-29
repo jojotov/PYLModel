@@ -19,6 +19,7 @@
 
 - (void)testExample {
     NSDictionary *bookJSON = @{
+                               @"sign":@('e'),
                                @"isSoldOut":@0,
                                @"isOkForKid":@"trUe",
                                @"id": @1,
@@ -68,6 +69,7 @@
     
     XCTAssert(aBook.isSoldOut == false);
     XCTAssert(aBook.isOkForKid == YES);
+    XCTAssert(aBook.sign == 'e');
 }
 
 
