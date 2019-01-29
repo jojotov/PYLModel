@@ -87,8 +87,8 @@
     } else if ([property.type isEqualToString:@"B"] && [jsonValue respondsToSelector:@selector(boolValue)]) {
         ((void(*)(id,SEL,bool))(void*)objc_msgSend)(self, setterSEL, [jsonValue boolValue]);
         
-    } else if (([property.type isEqualToString:@"NSString"] || [property.type isEqualToString:@"NSMutableString"]) && [jsonValue isKindOfClass:[NSString class]]) {
-        ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, [jsonValue mutableCopy]);
+    } else if ([property.type isEqualToString:@"NSString"] || [property.type isEqualToString:@"NSMutableString"]) {
+        [self setJSONValue:jsonValue withStringProperty:property setterSEL:setterSEL];
     
     } else if ([property.type isEqualToString:@"NSDate"]) {
         [self setJSONValue:jsonValue withDateProperty:property setterSEL:setterSEL];
@@ -106,6 +106,18 @@
             id object = [[cls alloc] initWithJSON:jsonValue];
             ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, object);
         }
+    }
+}
+
+- (void)setJSONValue:(id)jsonValue withStringProperty:(PYLModelProperty *)property setterSEL:(SEL)setterSEL {
+    NSString *str;
+    if ([jsonValue isKindOfClass:[NSString class]]) {
+        str = jsonValue;
+    } else if ([jsonValue isKindOfClass:[NSNumber class]]) {
+        str = [jsonValue stringValue];
+    }
+    if (str) {
+        ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, [str mutableCopy]);
     }
 }
 
