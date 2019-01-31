@@ -12,12 +12,11 @@
 #import "PYLModel+JSON.h"
 
 @interface TestJSON : XCTestCase
-
 @end
 
 @implementation TestJSON
 
-- (void)testExample {
+- (NSDictionary *)bookJSON {
     NSDictionary *bookJSON = @{
                                @"salary":@30000,
                                @"sign":@('e'),
@@ -51,10 +50,26 @@
                                                @"name":@"lucy",
                                                @"age":@"18"
                                                }
-                                       }
+                                       },
+                               @"some":@"id value"
                                };
-    Book *aBook = [[Book alloc] initWithJSON:bookJSON];
-    
+    return bookJSON;
+}
+
+- (void)test_字典转模型 {
+    Book *aBook = [[Book alloc] initWithJSON:[self bookJSON]];
+    [self assertBook:aBook];
+}
+
+- (void)test_测试归档解裆 {
+    Book *a = [[Book alloc] initWithJSON:[self bookJSON]];
+    NSError *e;
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:a requiringSecureCoding:false error:&e];
+    XCTAssert(data != nil);
+    [self assertBook:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
+}
+
+- (void)assertBook:(Book *)aBook {
     [aBook setValue:@"asjoeijoae" forKey:@"key_not_exist"];
     
     XCTAssert(aBook.bookID == 999999999999999999);
@@ -96,6 +111,7 @@
     XCTAssert(aBook.isSoldOut == false);
     XCTAssert(aBook.isOkForKid == YES);
     XCTAssert(aBook.sign == 'e');
+    XCTAssert([aBook.some isEqualToString:@"id value"]);
 }
 
 @end

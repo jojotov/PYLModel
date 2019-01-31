@@ -56,6 +56,9 @@
     } else if (([property.type isEqualToString:@"NSDictionary"] || [property.type isEqualToString:@"NSMutableDictionary"]) && [jsonValue isKindOfClass:[NSDictionary class]]) {
         [self setJSONValue:jsonValue withDictionaryProperty:property];
         
+    } else if ([property.type isEqualToString:@"@"] && jsonValue) {
+        [self setValue:jsonValue forKey:property.name];
+        
     } else {
         //property.type 是自定义的类
         Class cls = objc_getClass([property.type UTF8String]);
