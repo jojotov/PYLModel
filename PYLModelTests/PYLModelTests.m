@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "Book.h"
 #import "Author.h"
+#import "PYLModel+JSON.h"
 
 @interface PYLModelTests : XCTestCase
 

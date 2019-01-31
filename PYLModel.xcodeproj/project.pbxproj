@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4432558F220282A7002BD25C /* PYLModel+JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 4432558D220282A7002BD25C /* PYLModel+JSON.h */; };
+		44325590220282A7002BD25C /* PYLModel+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4432558E220282A7002BD25C /* PYLModel+JSON.m */; };
 		44EE588321FFDE2200DD43E5 /* PYLModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE587A21FFDE2200DD43E5 /* PYLModel.framework */; };
 		44EE589321FFDE6400DD43E5 /* PYLModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 44EE589121FFDE6400DD43E5 /* PYLModel.h */; };
 		44EE589421FFDE6400DD43E5 /* PYLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EE589221FFDE6400DD43E5 /* PYLModel.m */; };
@@ -28,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4432558D220282A7002BD25C /* PYLModel+JSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PYLModel+JSON.h"; sourceTree = "<group>"; };
+		4432558E220282A7002BD25C /* PYLModel+JSON.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PYLModel+JSON.m"; sourceTree = "<group>"; };
 		44EE587A21FFDE2200DD43E5 /* PYLModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PYLModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44EE587D21FFDE2200DD43E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44EE588221FFDE2200DD43E5 /* PYLModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PYLModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +111,8 @@
 			children = (
 				44EE589121FFDE6400DD43E5 /* PYLModel.h */,
 				44EE589221FFDE6400DD43E5 /* PYLModel.m */,
+				4432558D220282A7002BD25C /* PYLModel+JSON.h */,
+				4432558E220282A7002BD25C /* PYLModel+JSON.m */,
 				44EE58AA21FFE8B700DD43E5 /* PYLModelProperty.h */,
 				44EE58AB21FFE8B700DD43E5 /* PYLModelProperty.m */,
 			);
@@ -120,6 +126,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4432558F220282A7002BD25C /* PYLModel+JSON.h in Headers */,
 				44EE589321FFDE6400DD43E5 /* PYLModel.h in Headers */,
 				44EE58AC21FFE8B700DD43E5 /* PYLModelProperty.h in Headers */,
 			);
@@ -221,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44325590220282A7002BD25C /* PYLModel+JSON.m in Sources */,
 				44EE58AD21FFE8B700DD43E5 /* PYLModelProperty.m in Sources */,
 				44EE589421FFDE6400DD43E5 /* PYLModel.m in Sources */,
 			);
