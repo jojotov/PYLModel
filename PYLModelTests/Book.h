@@ -10,6 +10,9 @@
 
 @class Author;
 @interface Book : PYLModel
+{
+    NSString *_vvv;
+}
 @property (nonatomic) long long bookID;
 @property (nonatomic) BOOL isSoldOut;
 @property (nonatomic) BOOL isOkForKid;
@@ -27,4 +30,7 @@
 @property (nonatomic) id some;
 @property (nonatomic) Class fatherClass;
 @property (nonatomic) SEL aSEL;
+
+- (void)setVVV:(NSString *)v;
+- (NSString *)vvv;
 @end

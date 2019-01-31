@@ -55,7 +55,8 @@
                                @"some":@"id value",
                                @"fatherClass": @"NSDictionary",
                                @"aSEL": @"someMethodName:",
-                               @"ttt":@"变"
+                               @"ttt":@"变",
+                               @"vvv":@"xxx"
                                };
     return bookJSON;
 }
@@ -126,6 +127,7 @@
     
     XCTAssert([aBook.ttt isMemberOfClass:objc_getClass("__NSCFString")]);
     XCTAssert([aBook.ttt isEqualToString:@"变"]);
+    XCTAssert([[aBook vvv] isEqualToString:@"xxx"]);
 }
 
 @end

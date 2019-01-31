@@ -13,15 +13,15 @@
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     unsigned int count;
-    objc_property_t *prop_arr = class_copyPropertyList(object_getClass(self), &count);
+    Ivar *ivar_arr = class_copyIvarList(object_getClass(self), &count);
     for (int i = 0; i < count; i++) {
-        objc_property_t prop = prop_arr[i];
-        PYLModelProperty *property = [[PYLModelProperty alloc] initWithObjcProperty:prop];
+        Ivar ivar = ivar_arr[i];
+        PYLModelProperty *property = [[PYLModelProperty alloc] initWithObjcIvar:ivar];
         if ([self isPropertySupportArchive:property]) {
             [aCoder encodeObject:[self valueForKey:property.name] forKey:property.name];
         }
     }
-    free(prop_arr);
+    free(ivar_arr);
 }
 
 + (BOOL)supportsSecureCoding {
@@ -31,10 +31,10 @@
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super init]) {
         unsigned int count;
-        objc_property_t *prop_arr = class_copyPropertyList(object_getClass(self), &count);
+        Ivar *ivar_arr = class_copyIvarList(object_getClass(self), &count);
         for (int i = 0; i < count; i++) {
-            objc_property_t prop = prop_arr[i];
-            PYLModelProperty *property = [[PYLModelProperty alloc] initWithObjcProperty:prop];
+            Ivar ivar = ivar_arr[i];
+            PYLModelProperty *property = [[PYLModelProperty alloc] initWithObjcIvar:ivar];
             if (![self isPropertySupportArchive:property]) {
                 continue;
             }
@@ -56,14 +56,14 @@
                 value = [aDecoder decodeObjectOfClass:[NSMutableDictionary class] forKey:property.name];
             } else if ([property.type isEqualToString:@"NSDate"]) {
                 value = [aDecoder decodeObjectOfClass:[NSDate class] forKey:property.name];
-            } else { 
+            } else {
                 value = [aDecoder decodeObjectForKey:property.name];
             }
             if (value) {
                 [self setValue:value forKey:property.name];
             }
         }
-        free(prop_arr);
+        free(ivar_arr);
     }
     return self;
 }

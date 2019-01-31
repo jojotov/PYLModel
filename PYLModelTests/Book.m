@@ -11,6 +11,14 @@
 
 @implementation Book
 
+- (void)setVVV:(NSString *)v {
+    _vvv = [v copy];
+}
+
+- (NSString *)vvv {
+    return _vvv;
+}
+
 - (NSDictionary<NSString *, NSString *> *)propertyName_jsonKey_mapper {
     return @{
              @"bookID":@"id",

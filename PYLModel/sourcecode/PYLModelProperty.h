@@ -14,4 +14,5 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *type;
 - (instancetype)initWithObjcProperty:(objc_property_t)prop;
+- (instancetype)initWithObjcIvar:(Ivar)ivar;
 @end

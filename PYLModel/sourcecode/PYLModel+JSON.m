@@ -16,10 +16,10 @@
     self = [super init];
     if (self) {
         unsigned int count;
-        objc_property_t *prop_arr = class_copyPropertyList(object_getClass(self), &count);
+        Ivar *ivar_arr = class_copyIvarList(object_getClass(self), &count);
         for (int i = 0; i < count; i++) {
-            objc_property_t prop = prop_arr[i];
-            PYLModelProperty *property = [[PYLModelProperty alloc] initWithObjcProperty:prop];
+            Ivar ivar = ivar_arr[i];
+            PYLModelProperty *property = [[PYLModelProperty alloc] initWithObjcIvar:ivar];
             NSString *jsonKey = self.propertyName_jsonKey_mapper[property.name];
             if (!jsonKey.length) {
                 jsonKey = property.name;
@@ -27,7 +27,7 @@
             id jsonValue = json[jsonKey];
             [self setJSONValue:jsonValue withProperty:property];
         }
-        free(prop_arr);
+        free(ivar_arr);
     }
     return self;
 }

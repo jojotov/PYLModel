@@ -37,4 +37,20 @@
     }
     return self;
 }
+
+- (instancetype)initWithObjcIvar:(Ivar)ivar {
+    if (self = [super init]) {
+        _name = [[NSString stringWithUTF8String:ivar_getName(ivar)] substringFromIndex:1]; //去掉 _
+        NSString *str = [NSString stringWithUTF8String:ivar_getTypeEncoding(ivar)];
+        if ([str rangeOfString:@"@\""].location == 0) {
+            //@"NSString"
+            //去掉 @""
+            _type = [str substringWithRange:NSMakeRange(2, str.length-3)];
+        } else {
+            //q 之类的基础类型
+            _type = str;
+        }
+    }
+    return self;
+}
 @end
