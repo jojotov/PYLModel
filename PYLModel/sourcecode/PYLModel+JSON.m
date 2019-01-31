@@ -46,7 +46,8 @@
     if (![self respondsToSelector:setterSEL]) {
         return;
     }
-    if ([@[@"s",@"l",@"C",@"I",@"S",@"L",@"Q"] containsObject:property.type] && [jsonValue isKindOfClass:[NSString class]]) {
+    
+    if ([[@"s,l,C,I,S,L,Q" componentsSeparatedByString:@","] containsObject:property.type] && [jsonValue isKindOfClass:[NSString class]]) {
         //转换成 NSNumber
         jsonValue = @([(NSString*)jsonValue doubleValue]);
     }
