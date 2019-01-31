@@ -17,6 +17,7 @@
 @property (nonatomic) short testShort;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *salary;
+@property (nonatomic) NSMutableString *ttt;
 @property (nonatomic) NSDate *created;
 @property (nonatomic) NSDate *updated;
 @property (nonatomic) NSArray<NSString *> *previews;

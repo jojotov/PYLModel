@@ -10,6 +10,7 @@
 #import "Book.h"
 #import "Author.h"
 #import "PYLModel+JSON.h"
+#import <objc/runtime.h>
 
 @interface TestJSON : XCTestCase
 @end
@@ -53,7 +54,8 @@
                                        },
                                @"some":@"id value",
                                @"fatherClass": @"NSDictionary",
-                               @"aSEL": @"someMethodName:"
+                               @"aSEL": @"someMethodName:",
+                               @"ttt":@"变"
                                };
     return bookJSON;
 }
@@ -69,7 +71,7 @@
 - (void)test_测试归档解裆 {
     Book *a = [[Book alloc] initWithJSON:[self bookJSON]];
     NSError *e;
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:a requiringSecureCoding:false error:&e];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:a requiringSecureCoding:true error:&e];
     XCTAssert(data != nil);
     
     Book *aBook = [NSKeyedUnarchiver unarchiveObjectWithData:data];
@@ -91,7 +93,7 @@
     XCTAssert([aBook.salary isEqualToString:@"30000"]);
     XCTAssert([aBook.salary isKindOfClass:[NSString class]]);
     
-    XCTAssert([aBook.extraAuthDict respondsToSelector:@selector(setObject:forKey:)]);
+    XCTAssert([aBook.extraAuthDict isMemberOfClass:objc_getClass("__NSDictionaryM")]);
     Author *author = aBook.extraAuthDict[@"blacklist"];
     XCTAssert([author isKindOfClass:[Author class]]);
     XCTAssert([author.name isEqualToString:@"lucy"]);
@@ -102,7 +104,7 @@
     XCTAssert([aBook.previews isKindOfClass:[NSArray class]]);
     
     XCTAssert(aBook.authors.count == 2);
-    XCTAssert([aBook.authors respondsToSelector:@selector(removeObjectAtIndex:)]);
+    XCTAssert([aBook.authors isMemberOfClass:objc_getClass("__NSArrayM")]);
     
     author = aBook.authors[0];
     XCTAssert([author isKindOfClass:[Author class]]);
@@ -121,6 +123,9 @@
     XCTAssert(aBook.isOkForKid == YES);
     XCTAssert(aBook.sign == 'e');
     XCTAssert([aBook.some isEqualToString:@"id value"]);
+    
+    XCTAssert([aBook.ttt isMemberOfClass:objc_getClass("__NSCFString")]);
+    XCTAssert([aBook.ttt isEqualToString:@"变"]);
 }
 
 @end

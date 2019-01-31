@@ -8,6 +8,6 @@
 
 #import "PYLModel.h"
 
-@interface PYLModel (Archive) <NSCoding>
+@interface PYLModel (Archive) <NSSecureCoding>
 
 @end
