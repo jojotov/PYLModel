@@ -8,9 +8,5 @@
 
 #import "PYLModel.h"
 
-
 @implementation PYLModel
-
-
-
 @end

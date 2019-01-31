@@ -32,12 +32,6 @@
     return self;
 }
 
-- (SEL)setterSEL:(PYLModelProperty *)property {
-    NSString *str = property.name;
-    NSString *capitalLetter = [[str substringToIndex:1] capitalizedString];
-    return sel_registerName([NSString stringWithFormat:@"set%@%@:", capitalLetter, [str substringFromIndex:1]].UTF8String);
-}
-
 - (void)setJSONValue:(id)jsonValue withProperty:(PYLModelProperty *)property {
     if (!jsonValue) {
         return;

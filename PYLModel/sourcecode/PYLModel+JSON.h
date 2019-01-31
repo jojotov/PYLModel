@@ -8,8 +8,6 @@
 
 #import "PYLModel.h"
 
-
-
 @interface PYLModel (JSON)
 - (instancetype)initWithJSON:(NSDictionary *)json;
 - (NSDictionary<NSString *, NSString *> *)propertyName_jsonKey_mapper;

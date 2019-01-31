@@ -1,21 +1,22 @@
 //
-//  PYLModelTests.m
+//  TestArchive.m
 //  PYLModelTests
 //
-//  Created by yulei pang on 2019/1/29.
+//  Created by yulei pang on 2019/1/31.
 //  Copyright © 2019 pangyulei. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
+#import "PYLModel+Archive.h"
 #import "Book.h"
 #import "Author.h"
 #import "PYLModel+JSON.h"
 
-@interface PYLModelTests : XCTestCase
+@interface TestArchive : XCTestCase
 
 @end
 
-@implementation PYLModelTests
+@implementation TestArchive
 
 - (void)testExample {
     NSDictionary *bookJSON = @{
@@ -53,9 +54,11 @@
                                                }
                                        }
                                };
-    Book *aBook = [[Book alloc] initWithJSON:bookJSON];
-    
-    [aBook setValue:@"asjoeijoae" forKey:@"key_not_exist"];
+    Book *a = [[Book alloc] initWithJSON:bookJSON];
+    NSError *e;
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:a requiringSecureCoding:false error:&e];
+    XCTAssert(data != nil);
+    Book *aBook = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
     XCTAssert(aBook.bookID == 999999999999999999);
     XCTAssert(aBook.testShort == 2);
@@ -97,6 +100,5 @@
     XCTAssert(aBook.isOkForKid == YES);
     XCTAssert(aBook.sign == 'e');
 }
-
 
 @end

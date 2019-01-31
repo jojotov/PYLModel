@@ -9,10 +9,13 @@
 /* Begin PBXBuildFile section */
 		4432558F220282A7002BD25C /* PYLModel+JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 4432558D220282A7002BD25C /* PYLModel+JSON.h */; };
 		44325590220282A7002BD25C /* PYLModel+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4432558E220282A7002BD25C /* PYLModel+JSON.m */; };
+		4432559222028961002BD25C /* TestJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4432559122028960002BD25C /* TestJSON.m */; };
+		4432559622028A97002BD25C /* PYLModel+Archive.h in Headers */ = {isa = PBXBuildFile; fileRef = 4432559422028A97002BD25C /* PYLModel+Archive.h */; };
+		4432559722028A97002BD25C /* PYLModel+Archive.m in Sources */ = {isa = PBXBuildFile; fileRef = 4432559522028A97002BD25C /* PYLModel+Archive.m */; };
+		4432559922028AD1002BD25C /* TestArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 4432559822028AD1002BD25C /* TestArchive.m */; };
 		44EE588321FFDE2200DD43E5 /* PYLModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EE587A21FFDE2200DD43E5 /* PYLModel.framework */; };
 		44EE589321FFDE6400DD43E5 /* PYLModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 44EE589121FFDE6400DD43E5 /* PYLModel.h */; };
 		44EE589421FFDE6400DD43E5 /* PYLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EE589221FFDE6400DD43E5 /* PYLModel.m */; };
-		44EE589A21FFDEA300DD43E5 /* PYLModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EE589821FFDEA300DD43E5 /* PYLModelTests.m */; };
 		44EE589E21FFDF1C00DD43E5 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EE589D21FFDF1C00DD43E5 /* Book.m */; };
 		44EE58A121FFDF3700DD43E5 /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EE58A021FFDF3700DD43E5 /* Author.m */; };
 		44EE58AC21FFE8B700DD43E5 /* PYLModelProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 44EE58AA21FFE8B700DD43E5 /* PYLModelProperty.h */; };
@@ -32,12 +35,15 @@
 /* Begin PBXFileReference section */
 		4432558D220282A7002BD25C /* PYLModel+JSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PYLModel+JSON.h"; sourceTree = "<group>"; };
 		4432558E220282A7002BD25C /* PYLModel+JSON.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PYLModel+JSON.m"; sourceTree = "<group>"; };
+		4432559122028960002BD25C /* TestJSON.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestJSON.m; sourceTree = "<group>"; };
+		4432559422028A97002BD25C /* PYLModel+Archive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PYLModel+Archive.h"; sourceTree = "<group>"; };
+		4432559522028A97002BD25C /* PYLModel+Archive.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PYLModel+Archive.m"; sourceTree = "<group>"; };
+		4432559822028AD1002BD25C /* TestArchive.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestArchive.m; sourceTree = "<group>"; };
 		44EE587A21FFDE2200DD43E5 /* PYLModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PYLModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44EE587D21FFDE2200DD43E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44EE588221FFDE2200DD43E5 /* PYLModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PYLModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44EE589121FFDE6400DD43E5 /* PYLModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PYLModel.h; sourceTree = "<group>"; };
 		44EE589221FFDE6400DD43E5 /* PYLModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PYLModel.m; sourceTree = "<group>"; };
-		44EE589821FFDEA300DD43E5 /* PYLModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYLModelTests.m; sourceTree = "<group>"; };
 		44EE589921FFDEA300DD43E5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44EE589C21FFDF1C00DD43E5 /* Book.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
 		44EE589D21FFDF1C00DD43E5 /* Book.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
@@ -66,6 +72,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		443255932202898C002BD25C /* 测试字典转模型 */ = {
+			isa = PBXGroup;
+			children = (
+				4432559122028960002BD25C /* TestJSON.m */,
+				44EE589C21FFDF1C00DD43E5 /* Book.h */,
+				44EE589D21FFDF1C00DD43E5 /* Book.m */,
+				44EE589F21FFDF3700DD43E5 /* Author.h */,
+				44EE58A021FFDF3700DD43E5 /* Author.m */,
+			);
+			path = "测试字典转模型";
+			sourceTree = "<group>";
+		};
 		44EE580321FFD75200DD43E5 = {
 			isa = PBXGroup;
 			children = (
@@ -96,11 +114,8 @@
 		44EE589721FFDEA300DD43E5 /* PYLModelTests */ = {
 			isa = PBXGroup;
 			children = (
-				44EE589821FFDEA300DD43E5 /* PYLModelTests.m */,
-				44EE589C21FFDF1C00DD43E5 /* Book.h */,
-				44EE589D21FFDF1C00DD43E5 /* Book.m */,
-				44EE589F21FFDF3700DD43E5 /* Author.h */,
-				44EE58A021FFDF3700DD43E5 /* Author.m */,
+				443255932202898C002BD25C /* 测试字典转模型 */,
+				4432559822028AD1002BD25C /* TestArchive.m */,
 				44EE589921FFDEA300DD43E5 /* Info.plist */,
 			);
 			path = PYLModelTests;
@@ -115,6 +130,8 @@
 				4432558E220282A7002BD25C /* PYLModel+JSON.m */,
 				44EE58AA21FFE8B700DD43E5 /* PYLModelProperty.h */,
 				44EE58AB21FFE8B700DD43E5 /* PYLModelProperty.m */,
+				4432559422028A97002BD25C /* PYLModel+Archive.h */,
+				4432559522028A97002BD25C /* PYLModel+Archive.m */,
 			);
 			path = sourcecode;
 			sourceTree = "<group>";
@@ -129,6 +146,7 @@
 				4432558F220282A7002BD25C /* PYLModel+JSON.h in Headers */,
 				44EE589321FFDE6400DD43E5 /* PYLModel.h in Headers */,
 				44EE58AC21FFE8B700DD43E5 /* PYLModelProperty.h in Headers */,
+				4432559622028A97002BD25C /* PYLModel+Archive.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4432559722028A97002BD25C /* PYLModel+Archive.m in Sources */,
 				44325590220282A7002BD25C /* PYLModel+JSON.m in Sources */,
 				44EE58AD21FFE8B700DD43E5 /* PYLModelProperty.m in Sources */,
 				44EE589421FFDE6400DD43E5 /* PYLModel.m in Sources */,
@@ -239,8 +258,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				44EE589E21FFDF1C00DD43E5 /* Book.m in Sources */,
-				44EE589A21FFDEA300DD43E5 /* PYLModelTests.m in Sources */,
 				44EE58A121FFDF3700DD43E5 /* Author.m in Sources */,
+				4432559922028AD1002BD25C /* TestArchive.m in Sources */,
+				4432559222028961002BD25C /* TestJSON.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
