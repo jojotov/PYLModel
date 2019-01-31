@@ -17,7 +17,9 @@
     for (int i = 0; i < count; i++) {
         objc_property_t prop = prop_arr[i];
         PYLModelProperty *property = [[PYLModelProperty alloc] initWithObjcProperty:prop];
-        [aCoder encodeObject:[self valueForKey:property.name] forKey:property.name];
+        if ([self isPropertySupportArchive:property]) {
+            [aCoder encodeObject:[self valueForKey:property.name] forKey:property.name];
+        }
     }
     free(prop_arr);
 }
@@ -29,12 +31,18 @@
         for (int i = 0; i < count; i++) {
             objc_property_t prop = prop_arr[i];
             PYLModelProperty *property = [[PYLModelProperty alloc] initWithObjcProperty:prop];
-            id value = [aDecoder decodeObjectForKey:property.name];
-            [self setValue:value forKey:property.name];
+            if ([self isPropertySupportArchive:property]) {
+                id value = [aDecoder decodeObjectForKey:property.name];
+                [self setValue:value forKey:property.name];
+            }
         }
         free(prop_arr);
     }
     return self;
+}
+
+- (BOOL)isPropertySupportArchive:(PYLModelProperty *)property {
+    return ![[@"#,:" componentsSeparatedByString:@","] containsObject:property.type];
 }
 
 @end

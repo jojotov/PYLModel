@@ -24,4 +24,6 @@
 @property (nonatomic) Author *single;
 @property (nonatomic) NSMutableDictionary<id,Author*> *extraAuthDict;
 @property (nonatomic) id some;
+@property (nonatomic) Class fatherClass;
+@property (nonatomic) SEL aSEL;
 @end

@@ -59,6 +59,17 @@
     } else if ([property.type isEqualToString:@"@"] && jsonValue) {
         [self setValue:jsonValue forKey:property.name];
         
+    } else if ([property.type isEqualToString:@"#"] && [jsonValue isKindOfClass:[NSString class]]) {
+        Class cls = objc_getClass([jsonValue UTF8String]);
+        [self setValue:cls forKey:property.name];
+    
+    } else if ([property.type isEqualToString:@":"] && [jsonValue isKindOfClass:[NSString class]]) {
+        SEL setterSEL = [self setterSEL:property];
+        if ([self respondsToSelector:setterSEL]) {
+            //SEL 不支持 KVC 赋值，只能用消息发送来赋值
+            SEL selValue = sel_registerName([jsonValue UTF8String]);
+            ((void(*)(id,SEL,SEL))(void *)objc_msgSend)(self, setterSEL, selValue);
+        }
     } else {
         //property.type 是自定义的类
         Class cls = objc_getClass([property.type UTF8String]);
@@ -144,6 +155,12 @@
         //直接赋值
         [self setValue:[jsonValue mutableCopy] forKey:property.name];
     }
+}
+
+- (SEL)setterSEL:(PYLModelProperty *)property {
+    NSString *str = property.name;
+    NSString *capitalLetter = [[str substringToIndex:1] capitalizedString];
+    return sel_registerName([NSString stringWithFormat:@"set%@%@:", capitalLetter, [str substringFromIndex:1]].UTF8String);
 }
 
 - (NSDictionary<NSString *, NSString *> *)propertyName_jsonKey_mapper {

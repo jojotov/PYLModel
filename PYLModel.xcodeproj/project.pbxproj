@@ -70,18 +70,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		443255932202898C002BD25C /* 测试字典转模型 */ = {
-			isa = PBXGroup;
-			children = (
-				4432559122028960002BD25C /* TestJSON.m */,
-				44EE589C21FFDF1C00DD43E5 /* Book.h */,
-				44EE589D21FFDF1C00DD43E5 /* Book.m */,
-				44EE589F21FFDF3700DD43E5 /* Author.h */,
-				44EE58A021FFDF3700DD43E5 /* Author.m */,
-			);
-			path = "测试字典转模型";
-			sourceTree = "<group>";
-		};
 		44EE580321FFD75200DD43E5 = {
 			isa = PBXGroup;
 			children = (
@@ -112,7 +100,11 @@
 		44EE589721FFDEA300DD43E5 /* PYLModelTests */ = {
 			isa = PBXGroup;
 			children = (
-				443255932202898C002BD25C /* 测试字典转模型 */,
+				4432559122028960002BD25C /* TestJSON.m */,
+				44EE589C21FFDF1C00DD43E5 /* Book.h */,
+				44EE589D21FFDF1C00DD43E5 /* Book.m */,
+				44EE589F21FFDF3700DD43E5 /* Author.h */,
+				44EE58A021FFDF3700DD43E5 /* Author.m */,
 				44EE589921FFDEA300DD43E5 /* Info.plist */,
 			);
 			path = PYLModelTests;

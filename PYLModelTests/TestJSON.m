@@ -51,14 +51,19 @@
                                                @"age":@"18"
                                                }
                                        },
-                               @"some":@"id value"
+                               @"some":@"id value",
+                               @"fatherClass": @"NSDictionary",
+                               @"aSEL": @"someMethodName:"
                                };
     return bookJSON;
 }
 
 - (void)test_字典转模型 {
     Book *aBook = [[Book alloc] initWithJSON:[self bookJSON]];
-    [self assertBook:aBook];
+
+    [self commonAssertBook:aBook];
+    XCTAssert([aBook.fatherClass isSubclassOfClass:[NSDictionary class]]);
+    XCTAssert([[NSString stringWithUTF8String:sel_getName(aBook.aSEL)] isEqualToString:@"someMethodName:"]);
 }
 
 - (void)test_测试归档解裆 {
@@ -66,10 +71,14 @@
     NSError *e;
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:a requiringSecureCoding:false error:&e];
     XCTAssert(data != nil);
-    [self assertBook:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
+    
+    Book *aBook = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    [self commonAssertBook:aBook];
+    XCTAssertNil(aBook.fatherClass); // Class 不支持归档解裆
+    XCTAssert([@"<null selector>" isEqualToString:[NSString stringWithUTF8String:sel_getName(aBook.aSEL)]]); //SEL 不支持归档解裆
 }
 
-- (void)assertBook:(Book *)aBook {
+- (void)commonAssertBook:(Book *)aBook {
     [aBook setValue:@"asjoeijoae" forKey:@"key_not_exist"];
     
     XCTAssert(aBook.bookID == 999999999999999999);
