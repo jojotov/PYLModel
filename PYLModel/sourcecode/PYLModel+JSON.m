@@ -42,77 +42,37 @@
     if (!jsonValue) {
         return;
     }
-    SEL setterSEL = [self setterSEL:property];
-    if (![self respondsToSelector:setterSEL]) {
-        return;
-    }
     
-    if ([[@"s,l,C,I,S,L,Q" componentsSeparatedByString:@","] containsObject:property.type] && [jsonValue isKindOfClass:[NSString class]]) {
-        //转换成 NSNumber
-        jsonValue = @([(NSString*)jsonValue doubleValue]);
-    }
-    if ([property.type isEqualToString:@"c"] && [jsonValue respondsToSelector:@selector(charValue)]) {
-        ((void(*)(id,SEL,char))(void*)objc_msgSend)(self, setterSEL, [jsonValue charValue]);
-        
-    } else if ([property.type isEqualToString:@"i"] && [jsonValue respondsToSelector:@selector(intValue)]) {
-        ((void(*)(id,SEL,int))(void*)objc_msgSend)(self, setterSEL, [jsonValue intValue]);
-        
-    } else if ([property.type isEqualToString:@"s"] && [jsonValue respondsToSelector:@selector(shortValue)]) {
-        ((void(*)(id,SEL,short))(void*)objc_msgSend)(self, setterSEL, [jsonValue shortValue]);
-        
-    } else if ([property.type isEqualToString:@"l"] && [jsonValue respondsToSelector:@selector(longValue)]) {
-        ((void(*)(id,SEL,long))(void*)objc_msgSend)(self, setterSEL, [jsonValue longValue]);
-        
-    } else if ([property.type isEqualToString:@"q"] && [jsonValue respondsToSelector:@selector(longLongValue)]) {
-        ((void(*)(id,SEL,long long))(void*)objc_msgSend)(self, setterSEL, [jsonValue longLongValue]);
-        
-    } else if ([property.type isEqualToString:@"C"] && [jsonValue respondsToSelector:@selector(unsignedCharValue)]) {
-        ((void(*)(id,SEL,unsigned char))(void*)objc_msgSend)(self, setterSEL, [jsonValue unsignedCharValue]);
-        
-    } else if ([property.type isEqualToString:@"I"] && [jsonValue respondsToSelector:@selector(unsignedIntValue)]) {
-        ((void(*)(id,SEL,unsigned int))(void*)objc_msgSend)(self, setterSEL, [jsonValue unsignedIntValue]);
-        
-    } else if ([property.type isEqualToString:@"S"] && [jsonValue respondsToSelector:@selector(unsignedShortValue)]) {
-        ((void(*)(id,SEL,unsigned short))(void*)objc_msgSend)(self, setterSEL, [jsonValue unsignedShortValue]);
-        
-    } else if ([property.type isEqualToString:@"L"] && [jsonValue respondsToSelector:@selector(unsignedLongValue)]) {
-        ((void(*)(id,SEL,unsigned long))(void*)objc_msgSend)(self, setterSEL, [jsonValue unsignedLongValue]);
-        
-    } else if ([property.type isEqualToString:@"Q"] && [jsonValue respondsToSelector:@selector(unsignedLongLongValue)]) {
-        ((void(*)(id,SEL,unsigned long long))(void*)objc_msgSend)(self, setterSEL, [jsonValue unsignedLongLongValue]);
-        
-    } else if ([property.type isEqualToString:@"f"] && [jsonValue respondsToSelector:@selector(floatValue)]) {
-        ((void(*)(id,SEL,float))(void*)objc_msgSend)(self, setterSEL, [jsonValue floatValue]);
-        
-    } else if ([property.type isEqualToString:@"d"] && [jsonValue respondsToSelector:@selector(doubleValue)]) {
-        ((void(*)(id,SEL,double))(void*)objc_msgSend)(self, setterSEL, [jsonValue doubleValue]);
-        
-    } else if ([property.type isEqualToString:@"B"] && [jsonValue respondsToSelector:@selector(boolValue)]) {
-        ((void(*)(id,SEL,bool))(void*)objc_msgSend)(self, setterSEL, [jsonValue boolValue]);
-        
+    if ([[@"c,i,s,l,q,C,I,S,L,Q,f,d,B" componentsSeparatedByString:@","] containsObject:property.type]) {
+        if ([[@"s,l,C,I,S,L,Q" componentsSeparatedByString:@","] containsObject:property.type] && [jsonValue isKindOfClass:[NSString class]]) {
+            //转换成 NSNumber
+            jsonValue = @([(NSString*)jsonValue doubleValue]);
+        }
+        [self setValue:jsonValue forKey:property.name];
+    
     } else if ([property.type isEqualToString:@"NSString"] || [property.type isEqualToString:@"NSMutableString"]) {
-        [self setJSONValue:jsonValue withStringProperty:property setterSEL:setterSEL];
+        [self setJSONValue:jsonValue withStringProperty:property];
         
     } else if ([property.type isEqualToString:@"NSDate"]) {
-        [self setJSONValue:jsonValue withDateProperty:property setterSEL:setterSEL];
+        [self setJSONValue:jsonValue withDateProperty:property];
         
     } else if (([property.type isEqualToString:@"NSArray"] || [property.type isEqualToString:@"NSMutableArray"]) && [jsonValue isKindOfClass:[NSArray class]]) {
-        [self setJSONValue:jsonValue withArrayProperty:property setterSEL:setterSEL];
+        [self setJSONValue:jsonValue withArrayProperty:property];
         
     } else if (([property.type isEqualToString:@"NSDictionary"] || [property.type isEqualToString:@"NSMutableDictionary"]) && [jsonValue isKindOfClass:[NSDictionary class]]) {
-        [self setJSONValue:jsonValue withDictionaryProperty:property setterSEL:setterSEL];
+        [self setJSONValue:jsonValue withDictionaryProperty:property];
         
     } else {
         //property.type 是自定义的类
         Class cls = objc_getClass([property.type UTF8String]);
         if (cls && [jsonValue isKindOfClass:[NSDictionary class]]) {
             id object = [[cls alloc] initWithJSON:jsonValue];
-            ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, object);
+            [self setValue:object forKey:property.name];
         }
     }
 }
 
-- (void)setJSONValue:(id)jsonValue withStringProperty:(PYLModelProperty *)property setterSEL:(SEL)setterSEL {
+- (void)setJSONValue:(id)jsonValue withStringProperty:(PYLModelProperty *)property {
     NSString *str;
     if ([jsonValue isKindOfClass:[NSString class]]) {
         str = jsonValue;
@@ -120,11 +80,11 @@
         str = [jsonValue stringValue];
     }
     if (str) {
-        ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, [str mutableCopy]);
+        [self setValue:[str mutableCopy] forKey:property.name];
     }
 }
 
-- (void)setJSONValue:(id)jsonValue withDateProperty:(PYLModelProperty *)property setterSEL:(SEL)setterSEL {
+- (void)setJSONValue:(id)jsonValue withDateProperty:(PYLModelProperty *)property {
     NSString *dateFormat = self.propertyName_dateFormat_mapper[property.name];
     NSDate *date;
     if (dateFormat.length) {
@@ -137,11 +97,11 @@
         date = [NSDate dateWithTimeIntervalSince1970:[jsonValue longLongValue]];
     }
     if (date) {
-        ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, date);
+        [self setValue:date forKey:property.name];
     }
 }
 
-- (void)setJSONValue:(id)jsonValue withArrayProperty:(PYLModelProperty *)property setterSEL:(SEL)setterSEL {
+- (void)setJSONValue:(id)jsonValue withArrayProperty:(PYLModelProperty *)property {
     Class elementClass = self.propertyName_elementClass_mapper[property.name];
     if (elementClass) {
         //元素是另一个类
@@ -154,18 +114,18 @@
                 }
             }
             if (tmpArray.count) {
-                ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, tmpArray);
+                [self setValue:tmpArray forKey:property.name];
             }
         } else {
             NSLog(@"元素类型也应该继承 PYLModel %s", __func__);
         }
     } else {
         //直接赋值
-        ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, [jsonValue mutableCopy]);
+        [self setValue:[jsonValue mutableCopy] forKey:property.name];
     }
 }
 
-- (void)setJSONValue:(id)jsonValue withDictionaryProperty:(PYLModelProperty *)property setterSEL:(SEL)setterSEL {
+- (void)setJSONValue:(id)jsonValue withDictionaryProperty:(PYLModelProperty *)property {
     Class elementClass = self.propertyName_elementClass_mapper[property.name];
     if (elementClass) {
         //元素是另一个类
@@ -178,14 +138,14 @@
                 }
             }];
             if (tmpDict.allKeys.count) {
-                ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, tmpDict);
+                [self setValue:tmpDict forKey:property.name];
             }
         } else {
             NSLog(@"元素类型也应该继承 PYLModel %s", __func__);
         }
     } else {
         //直接赋值
-        ((void(*)(id,SEL,id))(void*)objc_msgSend)(self, setterSEL, [jsonValue mutableCopy]);
+        [self setValue:[jsonValue mutableCopy] forKey:property.name];
     }
 }
 
@@ -200,4 +160,9 @@
 - (NSDictionary<NSString *,Class> *)propertyName_elementClass_mapper {
     return @{};
 }
+
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+    NSLog(@"set value for undefine key: %@ %s", key, __func__);
+}
+
 @end

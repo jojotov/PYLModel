@@ -54,6 +54,9 @@
                                        }
                                };
     Book *aBook = [[Book alloc] initWithJSON:bookJSON];
+    
+    [aBook setValue:@"asjoeijoae" forKey:@"key_not_exist"];
+    
     XCTAssert(aBook.bookID == 999999999999999999);
     XCTAssert(aBook.testShort == 2);
     XCTAssert(sizeof(aBook.bookID) == sizeof(long long));
